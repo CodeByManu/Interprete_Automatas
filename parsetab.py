@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftSUREASIGN ID N RE SUresultado : sresultado : ID ASIGN ss : Ns : IDs : s SU s\n        | s RE s'
+_lr_signature = 'leftCODEKWCODE EXIT KWrespuesta : ss : CODE KWs : EXIT'
     
-_lr_action_items = {'ID':([0,5,6,7,],[3,9,9,9,]),'N':([0,5,6,7,],[4,4,4,4,]),'$end':([1,2,3,4,8,9,10,11,],[0,-1,-4,-3,-5,-4,-6,-2,]),'SU':([2,3,4,8,9,10,11,],[5,-4,-3,-5,-4,-6,5,]),'RE':([2,3,4,8,9,10,11,],[6,-4,-3,-5,-4,-6,6,]),'ASIGN':([3,],[7,]),}
+_lr_action_items = {'CODE':([0,],[3,]),'EXIT':([0,],[4,]),'$end':([1,2,4,5,],[0,-1,-3,-2,]),'KW':([3,],[5,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'resultado':([0,],[1,]),'s':([0,5,6,7,],[2,8,10,11,]),}
+_lr_goto_items = {'respuesta':([0,],[1,]),'s':([0,],[2,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,11 +26,8 @@ for _k, _v in _lr_goto_items.items():
        _lr_goto[_x][_k] = _y
 del _lr_goto_items
 _lr_productions = [
-  ("S' -> resultado","S'",1,None,None,None),
-  ('resultado -> s','resultado',1,'p_resultado','miprimerinterprete (1).py',37),
-  ('resultado -> ID ASIGN s','resultado',3,'p_asignacion','miprimerinterprete (1).py',41),
-  ('s -> N','s',1,'p_expr_num','miprimerinterprete (1).py',45),
-  ('s -> ID','s',1,'p_expr_id','miprimerinterprete (1).py',49),
-  ('s -> s SU s','s',3,'p_expr_op','miprimerinterprete (1).py',57),
-  ('s -> s RE s','s',3,'p_expr_op','miprimerinterprete (1).py',58),
+  ("S' -> respuesta","S'",1,None,None,None),
+  ('respuesta -> s','respuesta',1,'p_respuesta','interprete_bomberos.py',55),
+  ('s -> CODE KW','s',2,'p_res_completa','interprete_bomberos.py',62),
+  ('s -> EXIT','s',1,'p_exit','interprete_bomberos.py',120),
 ]

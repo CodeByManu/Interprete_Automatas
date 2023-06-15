@@ -2,166 +2,68 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Grammar
 
-Rule 0     S' -> resultado
-Rule 1     resultado -> s
-Rule 2     resultado -> ID ASIGN s
-Rule 3     s -> N
-Rule 4     s -> ID
-Rule 5     s -> s SU s
-Rule 6     s -> s RE s
+Rule 0     S' -> respuesta
+Rule 1     respuesta -> s
+Rule 2     s -> CODE KW
+Rule 3     s -> EXIT
 
 Terminals, with rules where they appear
 
-ASIGN                : 2
-ID                   : 2 4
-N                    : 3
-RE                   : 6
-SU                   : 5
+CODE                 : 2
+EXIT                 : 3
+KW                   : 2
 error                : 
 
 Nonterminals, with rules where they appear
 
-resultado            : 0
-s                    : 1 2 5 5 6 6
+respuesta            : 0
+s                    : 1
 
 Parsing method: LALR
 
 state 0
 
-    (0) S' -> . resultado
-    (1) resultado -> . s
-    (2) resultado -> . ID ASIGN s
-    (3) s -> . N
-    (4) s -> . ID
-    (5) s -> . s SU s
-    (6) s -> . s RE s
+    (0) S' -> . respuesta
+    (1) respuesta -> . s
+    (2) s -> . CODE KW
+    (3) s -> . EXIT
 
-    ID              shift and go to state 3
-    N               shift and go to state 4
+    CODE            shift and go to state 3
+    EXIT            shift and go to state 4
 
-    resultado                      shift and go to state 1
+    respuesta                      shift and go to state 1
     s                              shift and go to state 2
 
 state 1
 
-    (0) S' -> resultado .
+    (0) S' -> respuesta .
 
 
 
 state 2
 
-    (1) resultado -> s .
-    (5) s -> s . SU s
-    (6) s -> s . RE s
+    (1) respuesta -> s .
 
-    $end            reduce using rule 1 (resultado -> s .)
-    SU              shift and go to state 5
-    RE              shift and go to state 6
+    $end            reduce using rule 1 (respuesta -> s .)
 
 
 state 3
 
-    (2) resultado -> ID . ASIGN s
-    (4) s -> ID .
+    (2) s -> CODE . KW
 
-    ASIGN           shift and go to state 7
-    SU              reduce using rule 4 (s -> ID .)
-    RE              reduce using rule 4 (s -> ID .)
-    $end            reduce using rule 4 (s -> ID .)
+    KW              shift and go to state 5
 
 
 state 4
 
-    (3) s -> N .
+    (3) s -> EXIT .
 
-    SU              reduce using rule 3 (s -> N .)
-    RE              reduce using rule 3 (s -> N .)
-    $end            reduce using rule 3 (s -> N .)
+    $end            reduce using rule 3 (s -> EXIT .)
 
 
 state 5
 
-    (5) s -> s SU . s
-    (3) s -> . N
-    (4) s -> . ID
-    (5) s -> . s SU s
-    (6) s -> . s RE s
+    (2) s -> CODE KW .
 
-    N               shift and go to state 4
-    ID              shift and go to state 9
-
-    s                              shift and go to state 8
-
-state 6
-
-    (6) s -> s RE . s
-    (3) s -> . N
-    (4) s -> . ID
-    (5) s -> . s SU s
-    (6) s -> . s RE s
-
-    N               shift and go to state 4
-    ID              shift and go to state 9
-
-    s                              shift and go to state 10
-
-state 7
-
-    (2) resultado -> ID ASIGN . s
-    (3) s -> . N
-    (4) s -> . ID
-    (5) s -> . s SU s
-    (6) s -> . s RE s
-
-    N               shift and go to state 4
-    ID              shift and go to state 9
-
-    s                              shift and go to state 11
-
-state 8
-
-    (5) s -> s SU s .
-    (5) s -> s . SU s
-    (6) s -> s . RE s
-
-    SU              reduce using rule 5 (s -> s SU s .)
-    RE              reduce using rule 5 (s -> s SU s .)
-    $end            reduce using rule 5 (s -> s SU s .)
-
-  ! SU              [ shift and go to state 5 ]
-  ! RE              [ shift and go to state 6 ]
-
-
-state 9
-
-    (4) s -> ID .
-
-    SU              reduce using rule 4 (s -> ID .)
-    RE              reduce using rule 4 (s -> ID .)
-    $end            reduce using rule 4 (s -> ID .)
-
-
-state 10
-
-    (6) s -> s RE s .
-    (5) s -> s . SU s
-    (6) s -> s . RE s
-
-    SU              reduce using rule 6 (s -> s RE s .)
-    RE              reduce using rule 6 (s -> s RE s .)
-    $end            reduce using rule 6 (s -> s RE s .)
-
-  ! SU              [ shift and go to state 5 ]
-  ! RE              [ shift and go to state 6 ]
-
-
-state 11
-
-    (2) resultado -> ID ASIGN s .
-    (5) s -> s . SU s
-    (6) s -> s . RE s
-
-    $end            reduce using rule 2 (resultado -> ID ASIGN s .)
-    SU              shift and go to state 5
-    RE              shift and go to state 6
+    $end            reduce using rule 2 (s -> CODE KW .)
 
